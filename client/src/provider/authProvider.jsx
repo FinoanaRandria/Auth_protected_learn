@@ -40,4 +40,22 @@ useEffect(()=>{
 
 },[token])
 
-const contextValue = useMemo() a
+const contextValue = useMemo(()=>({
+   token,
+   setToken
+}),[])
+
+
+return(
+
+    <AuthContext.Provider value={contextValue}>
+      {children}
+    </AuthContext.Provider>
+)
+
+export const useAuth = () =>{
+    return useContext(AuthContext)
+};
+
+
+export default AuthProvider
