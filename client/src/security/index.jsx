@@ -1,6 +1,8 @@
 import { Route, RouterProvider, createBrowserRouter } from "react-router-dom";
 import { useAuth } from "../provider/authProvider";
 import { ProtectedRoute } from "./ProtectedRoute";
+import Login from "../pages/Login";
+import Logout from "../pages/Logout";
 
 
 
@@ -41,7 +43,7 @@ const Routes = () => {
                 },
                 {
                     path: "/logout",
-                    element: <div> Logout </div>
+                    element:  <Logout/>
                 }
             ]
 
@@ -60,13 +62,13 @@ const Routes = () => {
         {
 
             path: "/",
-            element: <div></div>
+            element: <div>not auth</div>
 
         },
 
         {
             path: "/login",
-            element: <div></div>
+            element: <Login/>
 
 
         }

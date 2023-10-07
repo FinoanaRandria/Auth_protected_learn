@@ -1,4 +1,4 @@
-import {Navigate,outlet} from "react-router-dom"
+import {Navigate,Outlet} from "react-router-dom"
 import { useAuth } from "../provider/authProvider"
 
 
@@ -13,5 +13,5 @@ export const ProtectedRoute = () =>{
     }
 
 
-    return <outlet/>
+    return <Outlet/>
 }
