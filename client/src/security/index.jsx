@@ -1,17 +1,78 @@
-import {Navigate,outlet} from "react-router-dom"
-import { useAuth } from "../provider/authProvider"
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { useAuth } from "../provider/authProvider";
+import { ProtectedRoute } from "./ProtectedRoute";
 
 
 
+const Routes = () => {
+    const { token } = useAuth()
 
-export const ProtectedRoute = () =>{
+    const routesForPublic = [{
 
-    const { token} = useAuth()
-
-    if(!token){
-       return <Navigate to="/login"/>
-    }
+        path: "/service",
+        element: <div>Service page</div>
 
 
-    return < outlet/>
+
+    }, {
+
+        path: "/about-us",
+        element: <div>About us</div>
+
+
+
+    }]
+
+    const routesForAuthenticatedOnly = [
+
+     {
+
+         path:"/",
+         element:<ProtectedRoute/>,
+         children:[
+
+            {
+                path:"/",
+                element:<div> user home</div>
+            },
+            {
+                    path:"/profile",
+                    element:<div> User Profile</div>
+            },
+            {
+                  path:"/logout",
+                  element:<div> Logout </div>
+            }
+         ]
+            
+
+
+
+     }
+
+
+
+        
+    ]
+  
+     const routesForNotAuthenticatedOnly = [
+
+      {
+      
+        path:"/",
+        element:<div></div>
+         
+      },
+         
+      {
+         path:"/",
+         element: <div></div>
+
+
+      }
+
+
+     ]
+
+
 }
